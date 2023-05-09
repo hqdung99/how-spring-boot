@@ -1,0 +1,13 @@
+spring:
+    config:
+        activate:
+            on-profile: test
+    datasource:
+        url: jdbc:postgresql://localhost:5432/how-spring-boot
+        username: postgres
+        password: admin
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+    flyway:
+        enabled: true
