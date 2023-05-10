@@ -9,6 +9,8 @@ paths:
     /users:
         get:
             summary: Get users
+            tags:
+                - 'AppApi'
             operationId: getAllUsers
             responses:
                 200:
@@ -19,6 +21,82 @@ paths:
                                 type: array
                                 items:
                                     $ref: '#/components/schemas/User'
+        post:
+            summary: Create new user
+            tags:
+                - 'AppApi'
+            operationId: createUser
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/User'
+            responses:
+                200:
+                    description: create user successful
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+    /user/{userId}:
+        get:
+            summary: Get a single user
+            tags:
+                - 'AppApi'
+            operationId: getUserById
+            parameters:
+                -   name: userId
+                    in: path
+                    description: user id
+                    schema:
+                        type: integer
+                        format: int64
+            responses:
+                200:
+                    description: Get user by id successful
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+        put:
+            summary: Update user
+            tags:
+                - 'AppApi'
+            operationId: updateUser
+            parameters:
+                -   name: userId
+                    in: path
+                    description: user id
+                    schema:
+                        type: integer
+                        format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/User'
+            responses:
+                200:
+                    description: update user successful
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+        delete:
+            summary: delete user
+            tags:
+                - 'AppApi'
+            operationId: deleteUser
+            parameters:
+                -   name: userId
+                    in: path
+                    description: user id
+                    schema:
+                        type: integer
+                        format: int64
+            responses:
+                200:
+                    description: delete user successful
 components:
     schemas:
         User:

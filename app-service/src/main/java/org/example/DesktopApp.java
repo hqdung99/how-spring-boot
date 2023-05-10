@@ -13,8 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DesktopApp {
     public static void main(String[] args) {
-        String appName = CommonUtility.getAppName();
-        System.out.println("Welcome to " + appName + " from Desktop app");
         SpringApplication.run(DesktopApp.class, args);
     }
 }

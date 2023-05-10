@@ -29,26 +29,41 @@ import java.util.Optional;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2023-05-10T16:53:26.251377+07:00[Asia/Ho_Chi_Minh]")
 
 @Validated
-@Api(value = "users", description = "the users API")
-public interface UsersApi {
+@Api(value = "user", description = "the user API")
+public interface UserApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
-    @ApiOperation(value = "Create new user", nickname = "createUser", notes = "", response = User.class, tags={ "AppApi", })
+    @ApiOperation(value = "delete user", nickname = "deleteUser", notes = "", tags={ "AppApi", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "create user successful", response = User.class) })
-    @RequestMapping(value = "/users",
-        produces = { "application/json" }, 
-        consumes = { "application/json" },
-        method = RequestMethod.POST)
-    default ResponseEntity<User> _createUser(@ApiParam(value = ""  )  @Valid @RequestBody User user) {
-        return createUser(user);
+        @ApiResponse(code = 200, message = "delete user successful") })
+    @RequestMapping(value = "/user/{userId}",
+        method = RequestMethod.DELETE)
+    default ResponseEntity<Void> _deleteUser(@ApiParam(value = "user id",required=true) @PathVariable("userId") Long userId) {
+        return deleteUser(userId);
     }
 
     // Override this method
-    default  ResponseEntity<User> createUser(User user) {
+    default  ResponseEntity<Void> deleteUser(Long userId) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    @ApiOperation(value = "Get a single user", nickname = "getUserById", notes = "", response = User.class, tags={ "AppApi", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Get user by id successful", response = User.class) })
+    @RequestMapping(value = "/user/{userId}",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    default ResponseEntity<User> _getUserById(@ApiParam(value = "user id",required=true) @PathVariable("userId") Long userId) {
+        return getUserById(userId);
+    }
+
+    // Override this method
+    default  ResponseEntity<User> getUserById(Long userId) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
@@ -63,18 +78,19 @@ public interface UsersApi {
     }
 
 
-    @ApiOperation(value = "Get users", nickname = "getAllUsers", notes = "", response = User.class, responseContainer = "List", tags={ "AppApi", })
+    @ApiOperation(value = "Update user", nickname = "updateUser", notes = "", response = User.class, tags={ "AppApi", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "successful operation", response = User.class, responseContainer = "List") })
-    @RequestMapping(value = "/users",
+        @ApiResponse(code = 200, message = "update user successful", response = User.class) })
+    @RequestMapping(value = "/user/{userId}",
         produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    default ResponseEntity<List<User>> _getAllUsers() {
-        return getAllUsers();
+        consumes = { "application/json" },
+        method = RequestMethod.PUT)
+    default ResponseEntity<User> _updateUser(@ApiParam(value = "user id",required=true) @PathVariable("userId") Long userId,@ApiParam(value = ""  )  @Valid @RequestBody User user) {
+        return updateUser(userId, user);
     }
 
     // Override this method
-    default  ResponseEntity<List<User>> getAllUsers() {
+    default  ResponseEntity<User> updateUser(Long userId, User user) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {

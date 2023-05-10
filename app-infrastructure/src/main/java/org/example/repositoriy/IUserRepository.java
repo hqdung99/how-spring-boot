@@ -2,10 +2,10 @@
  * Copyright 2023 (C) VinBrain
  */
 
-package org.example.repositories;
+package org.example.repositoriy;
 
 import org.example.dom.User;
-import org.example.dom.UserStatus;
+import org.example.enums.UserStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

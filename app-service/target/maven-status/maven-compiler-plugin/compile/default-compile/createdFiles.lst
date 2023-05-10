@@ -1,2 +1,5 @@
+org/example/service/impl/UserService.class
+org/example/service/IUserService.class
+org/example/exception/UserNotFoundException.class
 org/example/controller/UserController.class
 org/example/DesktopApp.class

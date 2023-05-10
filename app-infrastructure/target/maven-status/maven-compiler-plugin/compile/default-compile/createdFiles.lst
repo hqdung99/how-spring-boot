@@ -1,1 +1,4 @@
-org/example/ConsoleApp.class
+org/example/repositoriy/IUserRepository.class
+org/example/dom/User.class
+org/example/enums/UserStatus.class
+org/example/config/ApplicationConfig.class

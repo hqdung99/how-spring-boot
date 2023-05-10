@@ -16,10 +16,10 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>SharedLibrary</module>
-        <module>ConsoleApp</module>
-        <module>DesktopApp</module>
-        <module>specification</module>
+        <module>app-api</module>
+        <module>app-service</module>
+        <module>app-common</module>
+        <module>app-infrastructure</module>
     </modules>
 
     <properties>
@@ -31,13 +31,19 @@
         <dependencies>
             <dependency>
                 <groupId>org.example</groupId>
-                <artifactId>SharedLibrary</artifactId>
+                <artifactId>app-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.example</groupId>
+                <artifactId>app-infrastructure</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
+
             <dependency>
                 <groupId>org.example</groupId>
-                <artifactId>specification</artifactId>
+                <artifactId>app-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

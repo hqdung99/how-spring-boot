@@ -2,7 +2,7 @@
  * Copyright 2023 (C) VinBrain
  */
 
-package org.example.dom;
+package org.example.enums;
 
 /**
  * @author Huynh Quoc Dung
